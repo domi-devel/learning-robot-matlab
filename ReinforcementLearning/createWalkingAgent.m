@@ -5,7 +5,7 @@ useGPU = true;
 useParallel = true;
 % Set to true, to resume training from a saved agent
 resumeTraining = false;
-PRE_TRAINED_MODEL_FILE = 'trainedAgent_2D_05_18_2020_2243.mat';
+PRE_TRAINED_MODEL_FILE = 'trainedAgent_2D_05_22_2020_1738.mat';
 
 % Create the observation info
 numObs = 35;
