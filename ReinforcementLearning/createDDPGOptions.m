@@ -2,7 +2,7 @@
 agentOptions = rlDDPGAgentOptions;
 agentOptions.SampleTime = Ts;
 agentOptions.DiscountFactor = 0.99;
-agentOptions.MiniBatchSize = 5;
+agentOptions.MiniBatchSize = 100;
 agentOptions.ExperienceBufferLength = 5e5;
 agentOptions.TargetSmoothFactor = 1e-1;
 % agentOptions.NoiseOptions.MeanAttractionConstant = 2;
