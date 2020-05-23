@@ -9,7 +9,8 @@ close all
 addpath(genpath('ReinforcementLearning'), ...    % Reinforcement learning files
         genpath('Libraries'), ...                % Other dependencies
         genpath('CAD'), ...                      % CAD Models
-        genpath('savedAgents'));                 % Saved Agents
+        genpath('savedAgents'), ...                 % Saved Agents
+        genpath('ONNX'));
                          
 %% Load basic robot parameters
 robotParametersRL
