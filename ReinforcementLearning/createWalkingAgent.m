@@ -3,9 +3,9 @@
 useFastRestart = true;
 useGPU = true;
 useParallel = true;
-% Set to true, to resume training from a saved agent
-resumeTraining = false;
-PRE_TRAINED_MODEL_FILE = 'trainedAgent_2D_05_22_2020_1738.mat';
+resumeTraining = true;
+renewOptions = true;
+PRE_TRAINED_MODEL_FILE = 'Agent5018.mat';
 
 % Create the observation info
 numObs = 35;
@@ -34,10 +34,19 @@ createDDPGNetworks;
 createDDPGOptions;
 if resumeTraining
     % Load the agent from the previous session
-    sprintf('- Resume training of: %s', PRE_TRAINED_MODEL_FILE);
     load(PRE_TRAINED_MODEL_FILE,'agent');
-%     load(PRE_TRAINED_MODEL_FILE,'saved_agent');
-%     agent = saved_agent;
+    if exist('agent', 'var') == 0
+        load(PRE_TRAINED_MODEL_FILE,'saved_agent');
+        agent = saved_agent;
+    end
+    if renewOptions
+        tmpactor = getActor(agent);
+        tmpcritic = getCritic(agent);
+        tmpactor.Options = actorOptions;
+        tmpcritic.Options = criticOptions;
+        agent = rlDDPGAgent(tmpactor,tmpcritic,agentOptions)
+        clear tmpactor tmpcritic  
+    end
 else
     % Create a fresh new agent
     agent = rlDDPGAgent(actor,critic,agentOptions);
