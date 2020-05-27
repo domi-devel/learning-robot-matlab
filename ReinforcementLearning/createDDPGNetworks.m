@@ -33,9 +33,8 @@ criticNetwork = connectLayers(criticNetwork,'CriticStateFC2','add/in1');
 criticNetwork = connectLayers(criticNetwork,'CriticActionFC1','add/in2');
 
 % Create critic representation
-criticOptions = rlRepresentationOptions('Optimizer','adam','LearnRate',1e-5, ... 
-                                        'GradientThreshold',0.5)
-                                        % 'L2RegularizationFactor',2e-4);
+criticOptions = rlRepresentationOptions('Optimizer','adam','LearnRate',1e-3, ... 
+                                        'GradientThreshold',0.5, 'L2RegularizationFactor',2e-4);
 if useGPU
    criticOptions.UseDevice = 'gpu'; 
 end
@@ -64,8 +63,7 @@ actorNetwork = [
 
 % Create actor representation
 actorOptions = rlRepresentationOptions('Optimizer','adam','LearnRate',1e-4, ...
-                                       'GradientThreshold',0.5)
-                                  % ,'L2RegularizationFactor',1e-3);
+                                       'GradientThreshold',0.5,'L2RegularizationFactor',1e-5);
 if useGPU
    actorOptions.UseDevice = 'gpu'; 
 end

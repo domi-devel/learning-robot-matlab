@@ -3,12 +3,12 @@
 useFastRestart = true;
 useGPU = true;
 useParallel = true;
-resumeTraining = true;
+resumeTraining = false;
 renewOptions = true;
 PRE_TRAINED_MODEL_FILE = 'Agent5018.mat';
 
 % Create the observation info
-numObs = 35;
+numObs = 26;
 observationInfo = rlNumericSpec([numObs 1]);
 observationInfo.Name = 'observations';
 
@@ -18,7 +18,7 @@ actionInfo = rlNumericSpec([numAct 1],'LowerLimit',-1,'UpperLimit', 1);
 actionInfo.Name = 'foot_angles';
 
 % Environment
-mdl = 'walkingRobotRL2D';
+mdl = 'walkingRobot';
 load_system(mdl);
 blk = [mdl,'/RL Agent'];
 env = rlSimulinkEnv(mdl,blk,observationInfo,actionInfo);
@@ -60,5 +60,5 @@ curDir = pwd;
 saveDir = 'savedAgents';
 cd(saveDir)
 save(['trainedAgent_2D_' datestr(now,'mm_DD_YYYY_HHMM')],'agent');
-save(['trainingResults_2D_' datestr(now,'mm_DD_YYYY_HHMM')],'trainingResults');
+% save(['trainingResults_2D_' datestr(now,'mm_DD_YYYY_HHMM')],'trainingResults');
 cd(curDir)

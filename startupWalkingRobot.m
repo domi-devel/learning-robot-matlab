@@ -13,7 +13,7 @@ addpath(genpath('ReinforcementLearning'), ...    % Reinforcement learning files
         genpath('ONNX'));
                          
 %% Load basic robot parameters
-robotParametersRL
+robotParameters
 
 %% Open the README file
 % edit README.md

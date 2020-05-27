@@ -13,7 +13,7 @@ world_rot_damping = 5e-2;
 motor_speed_factor = 2;
                     
 % Contact/friction parameters
-contact_stiffness = 500;
+contact_stiffness = 10000;
 contact_damping = 50;
 mu_k = 0.7;
 mu_s = 0.9;
@@ -24,10 +24,10 @@ plane_y = 10;
 contact_point_radius = 1e-4;
 
 % Foot dimensions
-foot_radius = 2;
+foot_radius = 0.27;
 foot_width = 2;
 foot_opacity = 0;
-foot_offset = [-1 0 0];
+foot_offset = [0 -1.2 0];
 
 % Leg dimensions
 %leg_radius = 0.75;
@@ -53,7 +53,7 @@ joint_limit_damping = 10;
 
 %% Reinforcement Learning (RL) parameters
 Ts = 0.5; % Agent sample time
-Tf = 30;    % Simulation end time
+Tf = 25;    % Simulation end time
         
 
 % Initial conditions
@@ -64,6 +64,7 @@ vx0 = 0;    % Initial X linear velocity [m/s]
 vy0 = 0;    % Initial Y linear velocity [m/s]
 wx0 = 0;    % Initial X angular velocity [rad/s]
 wy0 = 0;    % Initial Y angular velocity [rad/s]
+rot0 = 0;   % Initial Torso rotation
 % Initial foot positions [m]
 % leftinit =  [0;0;-h/100];
 % rightinit = [0;0;-h/100];
